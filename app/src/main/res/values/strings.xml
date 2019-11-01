@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">MySymptomApps</string>
+    <string name="et_name">Nombre</string>
+    <string name="et_email">Email</string>
+    <string name="et_password">Password</string>
+    <string name="btn_register">Registrar Usuario</string>
+    <string name="bt_signout">Cerrar Sesión</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="btn_tologin">Ya Tengo Cuenta</string>
+    <string name="btn_toaddoccurence">Agregar Ocurrencia</string>
+    <string name="btn_tolistoccurencesview">Ver Ocurrencias</string>
+    <string name="tv_addOccurence">Describe el padecimiento que estás experimentando</string>
+    <string name="hint_et_title">Breve titulo</string>
+    <string name="hint_et_desc">Descripción (opcional)</string>
+    <string name="btn_addoccurence">Agregar</string>
+    <string name="btn_gotoprofile">Perfíl</string>
+    <string name="tv_spinner_info">Selecciona la intensidad de la ocurrencia</string>
+    <string name="tv_register">Registrado:</string>
+    <string-array name="intensities">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="title_activity_see_symptom">SeeSymptomActivity</string>
+    <string name="et_header_symptom">Información del Síntoma</string>
+    <string name="et_title">Título:</string>
+    <string name="et_desc">Descripción:</string>
+    <string name="et_intensity">Intensidad:</string>
+    <string name="et_datetime">Fecha:</string>
+</resources>
