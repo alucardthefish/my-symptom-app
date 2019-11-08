@@ -32,7 +32,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference appRef;
 
-    ArrayList<String> list;
+    ArrayList<String> keyList;
     ArrayAdapter<String> adaptador;
     ArrayList<Occurence> occurencesList;
     Occurence occurence;
@@ -52,9 +52,9 @@ public class ListSymptomsActivity extends AppCompatActivity {
         final DatabaseReference occurencesRef = appRef.child(user.getUid()).child(FirebaseReferences.OCCURENCE_REFERENCE);
 
         //Old implementation
-        list = new ArrayList<>();
+        keyList = new ArrayList<>();   //array to store occurence/symptom keys
         occurencesList = new ArrayList<>();
-        adaptador = new ArrayAdapter<String>(this, R.layout.occurence_info, R.id.symptomInfo, list);
+        // adaptador = new ArrayAdapter<String>(this, R.layout.occurence_info, R.id.symptomInfo, list);
         occurence = new Occurence();
 
         occurencesRef.addValueEventListener(new ValueEventListener() {
@@ -66,6 +66,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
                     occurencesList.add(occurence);
                     // Storing key to pass in the view and allow in the future to crud operations.
                     String key = ds.getKey();
+                    keyList.add(key);
                     //Old implementation
                     //list.add("Zona: " + occurence.getTitle() + "\t Intensidad: " + String.valueOf(occurence.getIntensity()) + "\nDescripción: " + occurence.getDescription());
                 }
@@ -92,13 +93,16 @@ public class ListSymptomsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Occurence symptom = occurencesList.get(position);
+                String symptomKey = keyList.get(position);
                 Intent i = new Intent(ListSymptomsActivity.this, SeeSymptomActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 i.putExtra("title", symptom.getTitle());
                 i.putExtra("description", symptom.getDescription());
                 i.putExtra("intensidad", ""+symptom.getIntensity());
                 i.putExtra("fecha", symptom.getTimeOfOccurence());
+                i.putExtra("symptomKey", symptomKey);
                 startActivity(i);
+                finish();
 
             }
         });

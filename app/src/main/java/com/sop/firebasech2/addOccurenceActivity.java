@@ -86,7 +86,7 @@ public class addOccurenceActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Toast.makeText(addOccurenceActivity.this, "El campo titulo no puede ser vacio", Toast.LENGTH_LONG).show();
+                    Toast.makeText(addOccurenceActivity.this, "Los campos titulo y descripción no pueden estar vacios", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -102,6 +102,7 @@ public class addOccurenceActivity extends AppCompatActivity {
 
     public boolean validateOccurence(){
         String title = et_occurence_title.getText().toString();
-        return !title.isEmpty();
+        String desc = et_description.getText().toString();
+        return !title.isEmpty() && !desc.isEmpty();
     }
 }

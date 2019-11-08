@@ -7,8 +7,8 @@
     <string name="bt_signout">Cerrar Sesión</string>
     <string name="btn_login">Iniciar Sesión</string>
     <string name="btn_tologin">Ya Tengo Cuenta</string>
-    <string name="btn_toaddoccurence">Agregar Ocurrencia</string>
-    <string name="btn_tolistoccurencesview">Ver Ocurrencias</string>
+    <string name="btn_toaddoccurence">Agregar Síntoma</string>
+    <string name="btn_tolistoccurencesview">Mis Síntomas</string>
     <string name="tv_addOccurence">Describe el padecimiento que estás experimentando</string>
     <string name="hint_et_title">Breve titulo</string>
     <string name="hint_et_desc">Descripción (opcional)</string>
@@ -29,4 +29,5 @@
     <string name="et_desc">Descripción:</string>
     <string name="et_intensity">Intensidad:</string>
     <string name="et_datetime">Fecha:</string>
+    <string name="btn_delete">Eliminar</string>
 </resources>
