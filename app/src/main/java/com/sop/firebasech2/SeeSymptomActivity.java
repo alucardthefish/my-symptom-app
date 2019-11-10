@@ -93,15 +93,11 @@ public class SeeSymptomActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(SeeSymptomActivity.this, "Síntoma eliminado exitosamente", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(SeeSymptomActivity.this, ListSymptomsActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(i);
                     SeeSymptomActivity.this.finish();
                 } else {
                     Toast.makeText(SeeSymptomActivity.this, "Hubo un error. No se pudo eliminar el síntoma", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //Toast.makeText(SeeSymptomActivity.this, "Eliminando el sintoma: " + symptomKey, Toast.LENGTH_LONG).show();
     }
 }
