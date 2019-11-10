@@ -80,6 +80,7 @@ public class addOccurenceActivity extends AppCompatActivity {
                                 Toast.makeText(addOccurenceActivity.this,"Ocurrencia agregada", Toast.LENGTH_SHORT).show();
                                 Router router = new Router(addOccurenceActivity.this);
                                 router.goto_profile(user);
+                                finish();
                             } else {
                                 Toast.makeText(addOccurenceActivity.this, "Hubo un problema", Toast.LENGTH_SHORT).show();
                             }

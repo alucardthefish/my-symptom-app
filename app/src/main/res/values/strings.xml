@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MySymptomApps</string>
+    <string name="app_name">MySymptomApp</string>
     <string name="et_name">Nombre</string>
     <string name="et_email">Email</string>
     <string name="et_password">Password</string>

@@ -42,6 +42,63 @@ public class ListSymptomsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_symptoms);
         Toast.makeText(ListSymptomsActivity.this, "listView created!", Toast.LENGTH_SHORT);
+        Log.d("Estado", "onCreate de listSymptoms");
+
+        /*database = FirebaseDatabase.getInstance();
+        appRef = database.getReference(FirebaseReferences.APP_REFERENCE);
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+        final DatabaseReference occurencesRef = appRef.child(user.getUid()).child(FirebaseReferences.OCCURENCE_REFERENCE);
+
+        //Old implementation
+        keyList = new ArrayList<>();   //array to store occurence/symptom keys
+        // occurencesList = new ArrayList<>();
+        // adaptador = new ArrayAdapter<String>(this, R.layout.occurence_info, R.id.symptomInfo, list);
+        occurence = new Occurence();
+        final ArrayList<Occurence> tmpOccurenceList = new ArrayList<>();
+
+        occurencesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                    //Adapter
+                    occurence = ds.getValue(Occurence.class);
+                    // occurencesList.add(occurence);
+                    tmpOccurenceList.add(occurence);
+                    // Storing key to pass in the view and allow in the future to crud operations.
+                    String key = ds.getKey();
+                    keyList.add(key);
+                    //Old implementation
+                    //list.add("Zona: " + occurence.getTitle() + "\t Intensidad: " + String.valueOf(occurence.getIntensity()) + "\nDescripción: " + occurence.getDescription());
+                }
+                //Old implementation
+                //listView.setAdapter(adaptador);
+                occurencesList = tmpOccurenceList;
+                listView.setAdapter(new Adaptador(ListSymptomsActivity.this, occurencesList));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });*/
+
+        listView = findViewById(R.id.listView);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("Estado", "onStart de listSymptoms");
+        occurencesList = new ArrayList<>();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("Estado", "onResume de listSymptoms");
 
         database = FirebaseDatabase.getInstance();
         appRef = database.getReference(FirebaseReferences.APP_REFERENCE);
@@ -53,17 +110,20 @@ public class ListSymptomsActivity extends AppCompatActivity {
 
         //Old implementation
         keyList = new ArrayList<>();   //array to store occurence/symptom keys
-        occurencesList = new ArrayList<>();
+        // occurencesList = new ArrayList<>();
         // adaptador = new ArrayAdapter<String>(this, R.layout.occurence_info, R.id.symptomInfo, list);
         occurence = new Occurence();
 
         occurencesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<Occurence> tmpOccurenceList = new ArrayList<>();
+                Log.d("Estado", "Los datos cambiaron en la nube o aqui se llamo la ref");
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
                     //Adapter
                     occurence = ds.getValue(Occurence.class);
-                    occurencesList.add(occurence);
+                    // occurencesList.add(occurence);
+                    tmpOccurenceList.add(occurence);
                     // Storing key to pass in the view and allow in the future to crud operations.
                     String key = ds.getKey();
                     keyList.add(key);
@@ -72,6 +132,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
                 }
                 //Old implementation
                 //listView.setAdapter(adaptador);
+                occurencesList = tmpOccurenceList;
                 listView.setAdapter(new Adaptador(ListSymptomsActivity.this, occurencesList));
             }
 
@@ -81,13 +142,6 @@ public class ListSymptomsActivity extends AppCompatActivity {
             }
         });
 
-        listView = findViewById(R.id.listView);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         //Adding listener for clicks on listView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -102,8 +156,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
                 i.putExtra("fecha", symptom.getTimeOfOccurence());
                 i.putExtra("symptomKey", symptomKey);
                 startActivity(i);
-                finish();
-
+                //finish();
             }
         });
     }
