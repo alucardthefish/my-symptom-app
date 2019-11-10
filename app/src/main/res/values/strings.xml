@@ -16,13 +16,6 @@
     <string name="btn_gotoprofile">Perfíl</string>
     <string name="tv_spinner_info">Selecciona la intensidad de la ocurrencia</string>
     <string name="tv_register">Registrado:</string>
-    <string-array name="intensities">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
     <string name="title_activity_see_symptom">SeeSymptomActivity</string>
     <string name="et_header_symptom">Información del Síntoma</string>
     <string name="et_title">Título:</string>
@@ -30,4 +23,15 @@
     <string name="et_intensity">Intensidad:</string>
     <string name="et_datetime">Fecha:</string>
     <string name="btn_delete">Eliminar</string>
+    <string name="btn_confirm">Confirmar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_update">Editar</string>
+    <string name="title_update_symp">Editar Síntoma</string>
+    <string-array name="intensities">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

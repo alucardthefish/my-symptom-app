@@ -3,6 +3,7 @@ package com.sop.firebasech2;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,13 +20,22 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sop.firebasech2.objetos.FirebaseReferences;
+import com.sop.firebasech2.objetos.Occurence;
 
 public class SeeSymptomActivity extends AppCompatActivity {
     private TextView titleTextView;
     private TextView descriptionEditText;
     private TextView intensityEditText;
     private Button deleteBtn;
+    private Button updateBtn;
+
     private String symptomKey;
+    private String title;
+    private String description;
+    private String intensidad;
+    private String fecha;
+
+    private static final int EDIT_SYMPTOM_REQUEST_CODE = 0;
 
     private FirebaseAuth mAuth;
     private FirebaseUser user;
@@ -67,17 +77,27 @@ public class SeeSymptomActivity extends AppCompatActivity {
             }
         });
 
+        //add update button
+        updateBtn = findViewById(R.id.buttonUpdateSymptom);
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateSymptomBtnAction();
+            }
+        });
+
     }
 
     private void getFromIntent(){
-        String title = getIntent().getStringExtra("title");
-        String descripcion = getIntent().getStringExtra("description");
-        String intensidad = getIntent().getStringExtra("intensidad");
-        String fecha = getIntent().getStringExtra("fecha");
-        titleTextView.setText(title);
-        descriptionEditText.setText(descripcion);
-        intensityEditText.setText(intensidad);
+        title = getIntent().getStringExtra("title");
+        description = getIntent().getStringExtra("description");
+        intensidad = getIntent().getStringExtra("intensidad");
+        fecha = getIntent().getStringExtra("fecha");
         symptomKey = getIntent().getStringExtra("symptomKey");
+
+        titleTextView.setText(title);
+        descriptionEditText.setText(description);
+        intensityEditText.setText(intensidad);
     }
 
     private void deleteSymptom(){
@@ -99,5 +119,32 @@ public class SeeSymptomActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void updateSymptomBtnAction(){
+
+        Intent i = new Intent(SeeSymptomActivity.this, editOccurenceActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        i.putExtra("title", title);
+        i.putExtra("description", description);
+        i.putExtra("intensity", ""+intensidad);
+        i.putExtra("date", fecha);
+        i.putExtra("symptomKey", symptomKey);
+        //startActivity(i);
+        startActivityForResult(i, EDIT_SYMPTOM_REQUEST_CODE);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Check if editOccurenceActivity response is ok
+        if (requestCode == EDIT_SYMPTOM_REQUEST_CODE){
+            if (resultCode == RESULT_OK){
+                titleTextView.setText(data.getStringExtra("title"));
+                descriptionEditText.setText(data.getStringExtra("description"));
+            }
+        }
     }
 }

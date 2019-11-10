@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SeeSymptomActivity"></activity>
+        <activity android:name=".editOccurenceActivity"
+            android:label="@string/title_update_symp"></activity>
+        <activity android:name=".SeeSymptomActivity" />
         <activity android:name=".ListSymptomsActivity" />
         <activity android:name=".addOccurenceActivity" />
         <activity android:name=".LoginActivity" />
