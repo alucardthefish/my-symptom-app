@@ -87,7 +87,7 @@ public class editOccurenceActivity extends AppCompatActivity {
                 Manejador manejador = new Manejador();
                 occurence.setTitle(tvTitle);
                 occurence.setDescription(etDesc);
-                Task<Void> updateBD = manejador.fuun(symptomKey, occurence);
+                Task<Void> updateBD = manejador.updateSymptom(symptomKey, occurence);
                 updateBD.addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

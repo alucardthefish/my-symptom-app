@@ -25,28 +25,9 @@ public class Manejador {
         currentUser = mAuth.getCurrentUser();
     }
 
-    public void updateSymptom(Occurence occurence, String key_node, final Context context){
+    public Task<Void> updateSymptom(String key_node, Occurence occurence){
         final DatabaseReference appRef = database.getReference(FirebaseReferences.APP_REFERENCE);
-        //Accessing the database location
-        appRef.child(currentUser.getUid())
-                .child(FirebaseReferences.OCCURENCE_REFERENCE)
-                .child(key_node).setValue(occurence)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(context, "Sintoma actualizado exitosamente", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(context, "Hubo un problema al actualizar", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    public Task<Void> fuun(String key_node, Occurence occurence){
-        final DatabaseReference appRef = database.getReference(FirebaseReferences.APP_REFERENCE);
-        //Accessing the database location
+        //Accessing the database ref
         return appRef.child(currentUser.getUid())
                 .child(FirebaseReferences.OCCURENCE_REFERENCE)
                 .child(key_node).setValue(occurence);

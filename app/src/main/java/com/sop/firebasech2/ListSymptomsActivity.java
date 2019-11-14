@@ -90,7 +90,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(ListSymptomsActivity.this, "Por favor revisa que tengas acceso a internet", Toast.LENGTH_LONG).show();
             }
         });
 
