@@ -41,6 +41,8 @@
         android:layout_marginStart="172dp"
         android:layout_marginLeft="172dp"
         android:layout_marginTop="28dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:text="@string/btn_confirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEditDescription" />
@@ -52,6 +54,8 @@
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="28dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:text="@string/btn_cancel"
         app:layout_constraintStart_toEndOf="@+id/btnConfirmEdition"
         app:layout_constraintTop_toBottomOf="@+id/etEditDescription" />

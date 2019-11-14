@@ -1,6 +1,8 @@
 package com.sop.firebasech2.objetos;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.sop.firebasech2.R;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Adaptador extends BaseAdapter {
 
@@ -51,15 +54,20 @@ public class Adaptador extends BaseAdapter {
         TextView tv_intensity = vista.findViewById(R.id.tv_intensity);
         //ImageView iv_imagen = vista.findViewById(R.id.iv_image);
         //Setting info in views
-        tv_titulo.setText( context.getResources().getString(R.string.et_title)+ " " + occurencesList.get(position).getTitle());
+        //tv_titulo.setText( context.getResources().getString(R.string.et_title) + " " + occurencesList.get(position).getTitle());
+        String title = "<b>" + context.getResources().getString(R.string.et_title) + "</b> " + occurencesList.get(position).getTitle();
+
+        tv_titulo.setText( Html.fromHtml(title));
         String desc = occurencesList.get(position).getDescription();
+        String description = "<b>" + context.getResources().getString(R.string.et_desc) + "</b> " + desc;
         if (desc.length() > 25) {
-            tv_descripcion.setText(context.getResources().getString(R.string.et_desc)+ " " + desc.substring(0,20) + "...");
-        } else {
-            tv_descripcion.setText(context.getResources().getString(R.string.et_desc)+ " " + desc);
+            description = "<b>" + context.getResources().getString(R.string.et_desc) + "</b> " + desc.substring(0,20) + "...";
         }
-        tv_datetime.setText(context.getResources().getString(R.string.tv_register)+ " " + occurencesList.get(position).getTimeOfOccurence());
-        tv_intensity.setText(context.getResources().getString(R.string.et_intensity)+ " " + occurencesList.get(position).getIntensity());
+        tv_descripcion.setText(Html.fromHtml(description));
+        String dtime = "<b>" + context.getResources().getString(R.string.tv_register) + "</b> " + occurencesList.get(position).getTimeOfOccurence();
+        tv_datetime.setText(Html.fromHtml(dtime));
+        String intensity = "<b>" + context.getResources().getString(R.string.et_intensity) + "</b> " + occurencesList.get(position).getIntensity();
+        tv_intensity.setText(Html.fromHtml(intensity));
 
         /*iv_imagen.setTag(position);
         iv_imagen.setOnClickListener(new View.OnClickListener() {

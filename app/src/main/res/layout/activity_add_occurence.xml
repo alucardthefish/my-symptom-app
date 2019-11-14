@@ -17,33 +17,34 @@
         android:layout_marginRight="8dp"
         android:text="@string/tv_addOccurence"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.277"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_occurence_title"
-        android:layout_width="305dp"
-        android:layout_height="47dp"
+        android:layout_width="332dp"
+        android:layout_height="54dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="@string/hint_et_title"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAddOccurence" />
 
     <EditText
         android:id="@+id/et_description"
-        android:layout_width="298dp"
-        android:layout_height="104dp"
+        android:layout_width="333dp"
+        android:layout_height="127dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
@@ -51,7 +52,7 @@
         android:hint="@string/hint_et_desc"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.277"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_occurence_title" />
 
@@ -64,9 +65,11 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@color/colorPrimary"
         android:text="@string/btn_addoccurence"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.374"
+        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
@@ -79,18 +82,20 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@color/colorPrimary"
         android:text="@string/btn_gotoprofile"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/btn_add"
-        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="163dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
+        android:layout_width="75dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_spinner_info" />
