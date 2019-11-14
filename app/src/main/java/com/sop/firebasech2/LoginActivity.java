@@ -1,10 +1,8 @@
 package com.sop.firebasech2;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,30 +57,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-                    //finish();
+
                     Toast.makeText(LoginActivity.this, "Acceso autorizado. Cargando datos...", Toast.LENGTH_LONG).show();
                     FirebaseUser currentUser = mAuth.getCurrentUser();
-                    //updateUI(currentUser);
+
                     Router router = new Router(LoginActivity.this);
                     router.goto_profile(currentUser);
-
 
                 } else {
                     Toast.makeText(LoginActivity.this, "No se pudo iniciar sesión, compruebe los datos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    public void updateUI(FirebaseUser user){
-        // Method that handles the sign in and up flow
-        Log.d("TAG", "User Found");
-        Intent i = new Intent(LoginActivity.this, ProfileActivity.class);
-        i.putExtra("name", user.getDisplayName());
-        i.putExtra("email", user.getEmail());
-        startActivity(i);
-        finish();
-
     }
 }

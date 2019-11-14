@@ -1,6 +1,5 @@
 package com.sop.firebasech2.Logica;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.Toast;

@@ -1,6 +1,5 @@
 package com.sop.firebasech2;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,7 +70,7 @@ public class addOccurenceActivity extends AppCompatActivity {
                     if (desc.isEmpty()){
                         desc = "No Description";
                     }
-                    int type = 1;   // Symptom type quemado
+                    int type = 1;   // Symptom type
                     Occurence occurence = new Occurence(title, desc, intensity, type);
                     appRef.child(userId).child(FirebaseReferences.OCCURENCE_REFERENCE).push().setValue(occurence).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -96,7 +95,6 @@ public class addOccurenceActivity extends AppCompatActivity {
         mSpinnerIntensity = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.intensities, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //ArrayAdapter <Integer> adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, intensities);
         mSpinnerIntensity.setAdapter(adapter);
 
     }

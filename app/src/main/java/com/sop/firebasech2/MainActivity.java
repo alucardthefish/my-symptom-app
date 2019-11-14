@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sop.firebasech2.objetos.FirebaseReferences;
 import com.sop.firebasech2.objetos.Router;
 
 import java.util.HashMap;
@@ -96,26 +97,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void updateUI(FirebaseUser user){
-        // Method that handles the sign in and up flow
-
-        String nombre = user.getDisplayName().toString();
-        String correo = user.getEmail().toString();
-        if (nombre.isEmpty()){
-            Toast.makeText(MainActivity.this, "Nombre de usuario esta vacio", Toast.LENGTH_LONG).show();
-        }
-        if (correo.isEmpty()){
-            Toast.makeText(MainActivity.this, "Correo de usuario esta vacio", Toast.LENGTH_LONG).show();
-        }
-        Log.d("TAG", "User Found");
-        Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-        i.putExtra("name", user.getDisplayName());
-        i.putExtra("email", user.getEmail());
-        startActivity(i);
-        finish();
-
-    }
-
     private void registerUser(){
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -144,16 +125,13 @@ public class MainActivity extends AppCompatActivity {
 
                      String id = user.getUid();
 
-                     mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                     mDatabase.child(FirebaseReferences.APP_REFERENCE).child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                          @Override
                          public void onComplete(@NonNull Task<Void> task2) {
                              if (task2.isSuccessful()){
-                                 //startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                                 //finish();//evitar que vuelva a pagina registro
                                  Toast.makeText(MainActivity.this, "Cuenta creada satisfactoriamente. Cargando datos...", Toast.LENGTH_LONG).show();
                                  FirebaseUser currentUser = mAuth.getCurrentUser();
-                                 //Log.d("TAGDATOS", "Nombre: " + currentUser.getDisplayName() + " / Email: " + currentUser.getEmail());
-                                 //updateUI(currentUser);
+
                                  Router router = new Router(MainActivity.this);
                                  router.goto_profile(currentUser);
                              } else {
