@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditTextPassword;
     private Button mButtonRegister;
     private Button mButtonToLogin;
+    private ProgressBar mProgressBar;
 
     // Variables de los datos que vamos a registrar
     private String name = "";
@@ -49,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mProgressBar = findViewById(R.id.progressBarRegister);
+        mProgressBar.setVisibility(ProgressBar.GONE);
 
         mEditTextName = findViewById(R.id.editTextName);
         mEditTextEmail = findViewById(R.id.editTextEmail);
@@ -98,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void registerUser(){
+        activateProgressBar(true);
+        Toast.makeText(MainActivity.this, "Registrando usuario...", Toast.LENGTH_SHORT).show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -135,14 +142,29 @@ public class MainActivity extends AppCompatActivity {
                                  Router router = new Router(MainActivity.this);
                                  router.goto_profile(currentUser);
                              } else {
+                                 activateProgressBar(false);
                                  Toast.makeText(MainActivity.this, "No se pudieron crear los datos correctamente", Toast.LENGTH_SHORT).show();
                              }
                          }
                      });
                  } else {
+                     activateProgressBar(false);
                      Toast.makeText(MainActivity.this,"No se pudo registrar este usuario: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                  }
             }
         });
+    }
+
+    private void activateProgressBar(boolean active){
+        mEditTextName.setEnabled(!active);
+        mEditTextEmail.setEnabled(!active);
+        mEditTextPassword.setEnabled(!active);
+        mButtonRegister.setEnabled(!active);
+        mButtonToLogin.setEnabled(!active);
+        if (active){
+            mProgressBar.setVisibility(ProgressBar.VISIBLE);
+        } else {
+            mProgressBar.setVisibility(ProgressBar.GONE);
+        }
     }
 }

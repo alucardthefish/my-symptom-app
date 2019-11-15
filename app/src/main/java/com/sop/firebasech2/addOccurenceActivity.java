@@ -76,7 +76,7 @@ public class addOccurenceActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(addOccurenceActivity.this,"Ocurrencia agregada", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(addOccurenceActivity.this,"Síntoma adicionada exitosamente", Toast.LENGTH_SHORT).show();
                                 Router router = new Router(addOccurenceActivity.this);
                                 router.goto_profile(user);
                                 finish();

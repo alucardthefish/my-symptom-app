@@ -27,6 +27,8 @@
     <string name="btn_cancel">Cancelar</string>
     <string name="btn_update">Editar</string>
     <string name="title_update_symp">Editar Síntoma</string>
+    <string name="label_user_register">Registrar Usuario</string>
+    <string name="label_user_login">Ingresar</string>
     <string-array name="intensities">
         <item>1</item>
         <item>2</item>

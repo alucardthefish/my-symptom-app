@@ -36,7 +36,6 @@ public class Router {
 
         //Some discrimination
         String activityName = this.currentActivity.getClass().getName();
-        Toast.makeText(this.currentActivity, activityName, Toast.LENGTH_SHORT).show();
         Log.d("Mytag", activityName);
         if (activityName.endsWith(".MainActivity") || activityName.endsWith(".LoginActivity")){
             this.currentActivity.finish();

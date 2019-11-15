@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
     private Button mButtonLogin;
+    private ProgressBar mProgressBarLogin;
 
     private String email = "";
     private String password = "";
@@ -35,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mEditTextEmail = findViewById(R.id.editTextEmailLogin);
         mEditTextPassword = findViewById(R.id.editTextPasswordLogin);
+        mProgressBarLogin = findViewById(R.id.progressBarLogin);
+        mProgressBarLogin.setVisibility(ProgressBar.GONE);
 
         mButtonLogin = findViewById(R.id.btnLogin);
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
+        activateProgressBar(true);
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -65,9 +70,22 @@ public class LoginActivity extends AppCompatActivity {
                     router.goto_profile(currentUser);
 
                 } else {
+                    activateProgressBar(false);
                     Toast.makeText(LoginActivity.this, "No se pudo iniciar sesión, compruebe los datos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+    }
+
+    private void activateProgressBar(boolean active){
+        mEditTextEmail.setEnabled(!active);
+        mEditTextPassword.setEnabled(!active);
+        mButtonLogin.setEnabled(!active);
+        if (active){
+            mProgressBarLogin.setVisibility(ProgressBar.VISIBLE);
+        } else {
+            mProgressBarLogin.setVisibility(ProgressBar.GONE);
+        }
     }
 }

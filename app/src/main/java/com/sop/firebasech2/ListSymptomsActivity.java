@@ -65,6 +65,8 @@ public class ListSymptomsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
+        Toast.makeText(ListSymptomsActivity.this, "Cargando síntomas...", Toast.LENGTH_SHORT).show();
+
         final DatabaseReference occurencesRef = appRef.child(user.getUid()).child(FirebaseReferences.OCCURENCE_REFERENCE);
 
         //Old implementation
@@ -75,12 +77,10 @@ public class ListSymptomsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<Occurence> tmpOccurenceList = new ArrayList<>();
-                Log.d("Estado", "Los datos cambiaron en la nube o aqui se llamo la ref");
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    //Adapter
                     occurence = ds.getValue(Occurence.class);
                     tmpOccurenceList.add(occurence);
-                    // Storing key to pass in the view and allow in the future to crud operations.
+                    // Storing key to pass in the view to allow crud operations.
                     String key = ds.getKey();
                     keyList.add(key);
                 }

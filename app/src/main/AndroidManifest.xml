@@ -14,9 +14,11 @@
         <activity android:name=".SeeSymptomActivity" />
         <activity android:name=".ListSymptomsActivity" />
         <activity android:name=".addOccurenceActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:label="@string/label_user_login"></activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:label="@string/label_user_register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
