@@ -12,8 +12,10 @@
         <activity android:name=".editOccurenceActivity"
             android:label="@string/title_update_symp"></activity>
         <activity android:name=".SeeSymptomActivity" />
-        <activity android:name=".ListSymptomsActivity" />
-        <activity android:name=".addOccurenceActivity" />
+        <activity android:name=".ListSymptomsActivity"
+            android:label="@string/label_list_symptoms"/>
+        <activity android:name=".addOccurenceActivity"
+            android:label="@string/label_add_symptom"/>
         <activity android:name=".LoginActivity"
             android:label="@string/label_user_login"></activity>
         <activity android:name=".ProfileActivity" />

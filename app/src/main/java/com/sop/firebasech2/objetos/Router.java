@@ -3,7 +3,6 @@ package com.sop.firebasech2.objetos;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.sop.firebasech2.ProfileActivity;

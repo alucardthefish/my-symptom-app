@@ -4,26 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".LoginActivity" >
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/editTextEmailLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/et_email"
-        android:layout_marginTop="20dp"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/editTextPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/et_password"
-        android:layout_marginTop="20dp"
         android:inputType="textPassword" />
 
     <ProgressBar

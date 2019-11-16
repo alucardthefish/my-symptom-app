@@ -29,6 +29,8 @@
     <string name="title_update_symp">Editar Síntoma</string>
     <string name="label_user_register">Registrar Usuario</string>
     <string name="label_user_login">Ingresar</string>
+    <string name="label_list_symptoms">Mis Síntomas</string>
+    <string name="label_add_symptom">Agregar Síntoma</string>
     <string-array name="intensities">
         <item>1</item>
         <item>2</item>

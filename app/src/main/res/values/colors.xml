@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="deleteColorBG">#AE1829</color>
+    <color name="elementlistcolor">#F07BEA99</color>
 </resources>
