@@ -38,4 +38,7 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="about">Información</string>
+    <string name="report_text">Seleccionar el intervalo de tiempo para el reporte</string>
+    <string name="btn_reports_section">Reportes</string>
 </resources>

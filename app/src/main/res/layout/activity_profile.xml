@@ -45,11 +45,11 @@
         android:text="@string/btn_tolistoccurencesview" />
 
     <Button
-        android:id="@+id/btnSignout"
+        android:id="@+id/btnReports"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
-        android:text="@string/bt_signout" />
+        android:text="@string/btn_reports_section" />
 </LinearLayout>

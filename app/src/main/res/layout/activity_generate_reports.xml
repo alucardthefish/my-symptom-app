@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/minimalisbg"
+    tools:context=".GenerateReportsActivity">
+
+    <TextView
+        android:id="@+id/tvGenRepText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/report_text"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnInitialDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Fecha inicial"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etInitialDate"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnFinalDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="Fecha final"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etFinalDate"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etReport"
+        android:layout_width="match_parent"
+        android:layout_height="430sp"
+        android:layout_margin="10dp"
+        android:layout_weight="40"
+        android:ems="10"
+        android:background="@android:color/white"
+        android:gravity="start|top"
+        android:enabled="false"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btnGenerateReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary"
+        android:text="Generar"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

@@ -3,15 +3,18 @@ package com.sop.firebasech2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private Button mButtonSignOut;
+    private Button mButtonReports;
     private Button mButtonAddOccurence;
     private Button mButtonListOccurences;
     private TextView mTextViewName;
@@ -28,13 +31,16 @@ public class ProfileActivity extends AppCompatActivity {
         mTextViewName = findViewById(R.id.textViewName);
         mTextViewEmail = findViewById(R.id.textViewEmail);
 
-        mButtonSignOut = findViewById(R.id.btnSignout);
-        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
+        mButtonReports = findViewById(R.id.btnReports);
+        mButtonReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
+                /*mAuth.signOut();
                 startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-                finish();
+                finish();*/
+                Intent i = new Intent(ProfileActivity.this, GenerateReportsActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i);
             }
         });
 
@@ -72,5 +78,28 @@ public class ProfileActivity extends AppCompatActivity {
         String email = getIntent().getStringExtra("email");
         mTextViewName.setText(name);
         mTextViewEmail.setText(email);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.menuAcerca:
+                Toast.makeText(this, "Seleccionado información", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuSignOut:
+                mAuth.signOut();
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+                finish();
+                break;
+        }
+        return true;
     }
 }
