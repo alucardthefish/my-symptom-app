@@ -75,7 +75,6 @@
         android:ems="10"
         android:background="@android:color/white"
         android:gravity="start|top"
-        android:enabled="false"
         android:inputType="textMultiLine" />
 
     <Button

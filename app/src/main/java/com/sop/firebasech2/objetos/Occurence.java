@@ -16,7 +16,8 @@ public class Occurence {
         this.intensity = intensity;
         this.type = type;
         //Create the date and time formatter to be used in dates
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.timeOfOccurence = formatter.format(new Date());
     }
 

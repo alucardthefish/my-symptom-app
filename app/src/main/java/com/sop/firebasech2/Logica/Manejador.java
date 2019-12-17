@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.sop.firebasech2.objetos.FirebaseReferences;
 import com.sop.firebasech2.objetos.Occurence;
 
@@ -31,5 +32,14 @@ public class Manejador {
         return appRef.child(currentUser.getUid())
                 .child(FirebaseReferences.OCCURENCE_REFERENCE)
                 .child(key_node).setValue(occurence);
+    }
+
+    public Query getSymptomReportByDates(String initialDate, String finalDate) {
+        Query queryReport = database.getReference(FirebaseReferences.APP_REFERENCE)
+                .child(currentUser.getUid())
+                .child(FirebaseReferences.OCCURENCE_REFERENCE);
+        return queryReport.orderByChild("timeOfOccurence")
+                .startAt(initialDate)
+                .endAt(finalDate);
     }
 }

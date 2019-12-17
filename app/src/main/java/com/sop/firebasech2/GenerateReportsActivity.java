@@ -1,17 +1,26 @@
 package com.sop.firebasech2;
 
 import android.app.DatePickerDialog;
+import android.app.DownloadManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.sop.firebasech2.Logica.Manejador;
+import com.sop.firebasech2.objetos.Occurence;
 import com.sop.firebasech2.objetos.Utils;
 
-import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class GenerateReportsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,7 +57,9 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                     // Dates are selected, they are not null or empty
                     if (Utils.validateDateInterval(iDate, fDate)){
                         // Dates are in correct form, correct interval of time
-                        // Generate report. Make query to db
+                        //TODO Generate report. Make query to db
+                        generateReport(iDate, fDate);
+
                     } else {
                         // Incorrect selection of interval. Initial is after Final date
                         Toast.makeText(GenerateReportsActivity.this,
@@ -79,7 +90,7 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        mEtInitialDate.setText(Utils.dateNumberDecorator(dayOfMonth)+"-"+Utils.dateNumberDecorator(month+1)+"-"+year);
+                        mEtInitialDate.setText(year+"-"+Utils.dateNumberDecorator(month+1)+"-"+Utils.dateNumberDecorator(dayOfMonth));
                     }
                 }, currentYear, currentMonth, currentDay);
                 datePickerDialog.show();
@@ -88,11 +99,59 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                 DatePickerDialog datePDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        mEtFinalDate.setText(Utils.dateNumberDecorator(dayOfMonth)+"-"+Utils.dateNumberDecorator(month+1)+"-"+year);
+                        mEtFinalDate.setText(year+"-"+Utils.dateNumberDecorator(month+1)+"-"+Utils.dateNumberDecorator(dayOfMonth));
                     }
                 }, currentYear, currentMonth, currentDay);
                 datePDialog.show();
                 break;
         }
+    }
+
+    public void generateReport(String initialDate, String finalDate){
+        Manejador manejador = new Manejador();
+        Query query = manejador.getSymptomReportByDates(initialDate, finalDate);
+        Log.d("GenerateReport", "Se ejecuto");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //TODO Add the printing of reports
+                Occurence symptom = new Occurence();
+                String dataString = "";
+                int i = 1;
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    Log.d("GenerateReport", "index: "+i);
+                    symptom = ds.getValue(Occurence.class);
+                    dataString += templateReport(symptom, i);
+                    i++;
+                }
+
+                if (dataString.isEmpty()){
+                    //TODO Print message about there were not results from that query specificatio, (for share func disable the future btn)
+                } else {
+                    printReport(dataString);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Add message of error
+                //TODO Add message of error when Database Error
+                String error = "<b>Error:"+ databaseError.getMessage() +"</b>";
+                printReport(error);
+            }
+        });
+    }
+
+    public String templateReport(Occurence symptom, int index) {
+        String msg = "<h3>Symptom "+ index +":</h3> " + symptom.getTitle();
+        msg += "<p><b>Date:</b> "+ symptom.getTimeOfOccurence() +"    <b>Intensity:</b> "+ symptom.getIntensity() +"</p>";
+        msg += "<p>"+ symptom.getDescription() +"</p><hr>";
+        return msg;
+        //mEtReport.setText(Html.fromHtml(msg));
+    }
+
+    public void printReport(String data){
+        mEtReport.setText(Html.fromHtml(data));
     }
 }
