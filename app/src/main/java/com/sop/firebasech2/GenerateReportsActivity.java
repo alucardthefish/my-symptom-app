@@ -1,7 +1,6 @@
 package com.sop.firebasech2;
 
 import android.app.DatePickerDialog;
-import android.app.DownloadManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +26,7 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
 
     private Button mBtnInitialDate;
     private Button mBtnFinalDate;
+    private Button mBtnShare;
     private EditText mEtInitialDate;
     private EditText mEtFinalDate;
     private EditText mEtReport;
@@ -57,7 +57,6 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                     // Dates are selected, they are not null or empty
                     if (Utils.validateDateInterval(iDate, fDate)){
                         // Dates are in correct form, correct interval of time
-                        //TODO Generate report. Make query to db
                         generateReport(iDate, fDate);
 
                     } else {
@@ -74,6 +73,16 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                             Toast.LENGTH_LONG)
                             .show();
                 }
+            }
+        });
+
+        mBtnShare = findViewById(R.id.btnShareReport);
+        mBtnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GenerateReportsActivity.this,
+                        "Share to the world your dolencies",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -114,7 +123,7 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //TODO Add the printing of reports
+                //Add the printing of reports
                 Occurence symptom = new Occurence();
                 String dataString = "";
                 int i = 1;
@@ -126,9 +135,15 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                 }
 
                 if (dataString.isEmpty()){
-                    //TODO Print message about there were not results from that query specificatio, (for share func disable the future btn)
+                    printReport("Symptom records were not found by the specified date interval.");
+                    // disable share button
+                    mBtnShare.setEnabled(false);
+                    mBtnShare.setBackgroundColor(getResources().getColor(R.color.common_google_signin_btn_text_light_disabled));
                 } else {
                     printReport(dataString);
+                    // enable share button
+                    mBtnShare.setEnabled(true);
+                    mBtnShare.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 }
 
             }
@@ -136,7 +151,6 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Add message of error
-                //TODO Add message of error when Database Error
                 String error = "<b>Error:"+ databaseError.getMessage() +"</b>";
                 printReport(error);
             }

@@ -77,13 +77,32 @@
         android:gravity="start|top"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/btnGenerateReport"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimary"
-        android:text="Generar"
-        android:textColor="@android:color/white" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnGenerateReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Generar"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnShareReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Compartir"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:enabled="false"
+            android:background="@color/common_google_signin_btn_text_light_disabled"
+            android:drawableLeft="@drawable/ic_share"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
 
 </LinearLayout>

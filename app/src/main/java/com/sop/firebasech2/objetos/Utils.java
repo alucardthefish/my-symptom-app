@@ -22,7 +22,7 @@ public final class Utils {
         try {
             Date initDate = sdf.parse(initialDate);
             Date finlDate = sdf.parse(finalDate);
-            output = finlDate.after(initDate);
+            output = finlDate.after(initDate) || (initDate.equals(finlDate));
         } catch (ParseException e) {
             e.printStackTrace();
         }

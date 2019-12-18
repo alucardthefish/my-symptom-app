@@ -40,6 +40,6 @@ public class Manejador {
                 .child(FirebaseReferences.OCCURENCE_REFERENCE);
         return queryReport.orderByChild("timeOfOccurence")
                 .startAt(initialDate)
-                .endAt(finalDate);
+                .endAt(finalDate + " 23:59:59");
     }
 }
