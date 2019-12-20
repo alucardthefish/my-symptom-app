@@ -1,6 +1,7 @@
 package com.sop.firebasech2;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -81,8 +82,14 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
             @Override
             public void onClick(View v) {
                 Toast.makeText(GenerateReportsActivity.this,
-                        "Share to the world your dolencies",
+                        "Share to the world your suffering",
                         Toast.LENGTH_LONG).show();
+                String reportText = mEtReport.getText().toString();
+                Intent mSharingIntent = new Intent(Intent.ACTION_SEND);
+                mSharingIntent.setType("text/plain");
+                mSharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Report of symptoms");
+                mSharingIntent.putExtra(Intent.EXTRA_TEXT, reportText);
+                startActivity(Intent.createChooser(mSharingIntent, "Elige como compartir tus síntomas"));
             }
         });
     }
