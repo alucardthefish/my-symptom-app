@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,6 +46,7 @@ public class SeeSymptomActivity extends AppCompatActivity {
 
         titleTextView = findViewById(R.id.textViewForTitle);
         descriptionEditText = findViewById(R.id.textViewForDesc);
+        descriptionEditText.setMovementMethod(new ScrollingMovementMethod());
         intensityEditText = findViewById(R.id.textViewForIntensity);
 
         getFromIntent();

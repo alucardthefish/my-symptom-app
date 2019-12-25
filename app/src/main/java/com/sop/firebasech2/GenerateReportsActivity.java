@@ -40,6 +40,8 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
         mEtInitialDate = findViewById(R.id.etInitialDate);
         mEtFinalDate = findViewById(R.id.etFinalDate);
         mEtReport = findViewById(R.id.etReport);
+        mEtReport.setFocusableInTouchMode(false);
+        mEtReport.clearFocus();
 
         mBtnInitialDate = findViewById(R.id.btnInitialDate);
         mBtnInitialDate.setOnClickListener(this);
