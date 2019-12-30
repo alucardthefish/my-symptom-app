@@ -22,7 +22,7 @@ import com.sop.firebasech2.objetos.Router;
 
 public class addOccurenceActivity extends AppCompatActivity {
 
-    private Button mButtonProfile;
+    //private Button mButtonProfile;
     private Button mButtonAddOccurence;
     private Spinner mSpinnerIntensity;
     private EditText et_occurence_title;
@@ -47,14 +47,14 @@ public class addOccurenceActivity extends AppCompatActivity {
         spinner_intensities = findViewById(R.id.spinner);
 
         // Button for going back to profile activity
-        mButtonProfile = findViewById(R.id.btn_goto_profile);
+        /*mButtonProfile = findViewById(R.id.btn_goto_profile);
         mButtonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Router router = new Router(addOccurenceActivity.this);
                 router.goto_profile(user);
             }
-        });
+        });*/
 
         // Button for add a new occurence in the database
         mButtonAddOccurence = findViewById(R.id.btn_add);

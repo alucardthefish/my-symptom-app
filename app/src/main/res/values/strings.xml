@@ -11,7 +11,7 @@
     <string name="btn_tolistoccurencesview">Mis Síntomas</string>
     <string name="tv_addOccurence">Describe el padecimiento que estás experimentando</string>
     <string name="hint_et_title">Breve titulo</string>
-    <string name="hint_et_desc">Descripción (opcional)</string>
+    <string name="hint_et_desc">Descripción</string>
     <string name="btn_addoccurence">Agregar</string>
     <string name="btn_gotoprofile">Perfíl</string>
     <string name="tv_spinner_info">Selecciona la intensidad de la ocurrencia</string>

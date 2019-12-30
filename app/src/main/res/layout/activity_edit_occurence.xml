@@ -1,63 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/minimalisbg"
     tools:context=".editOccurenceActivity">
 
     <EditText
         android:id="@+id/tvEditTitle"
-        android:layout_width="358dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:hint="@string/et_title"
-        android:text="@string/et_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/et_title" />
 
     <EditText
         android:id="@+id/etEditDescription"
-        android:layout_width="357dp"
-        android:layout_height="358dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="@string/et_desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditTitle" />
+        android:text="@string/et_desc" />
 
-    <Button
-        android:id="@+id/btnConfirmEdition"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginLeft="172dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:text="@string/btn_confirm"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEditDescription" />
+        android:layout_margin="10dp">
 
-    <Button
-        android:id="@+id/btnEditCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:text="@string/btn_cancel"
-        app:layout_constraintStart_toEndOf="@+id/btnConfirmEdition"
-        app:layout_constraintTop_toBottomOf="@+id/etEditDescription" />
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btnConfirmEdition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="@string/btn_confirm" />
+
+        <Button
+            android:id="@+id/btnEditCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="@string/btn_cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>
