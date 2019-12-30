@@ -18,7 +18,7 @@ public final class Utils {
     // Validation for date interval
     public static boolean validateDateInterval(String initialDate, String finalDate) {
         boolean output = false;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date initDate = sdf.parse(initialDate);
             Date finlDate = sdf.parse(finalDate);
