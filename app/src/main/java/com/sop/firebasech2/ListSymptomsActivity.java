@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,6 +25,7 @@ import com.sop.firebasech2.objetos.FirebaseReferences;
 import com.sop.firebasech2.objetos.Occurence;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ListSymptomsActivity extends AppCompatActivity {
 
@@ -36,6 +39,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
     ArrayAdapter<String> adaptador;
     ArrayList<Occurence> occurencesList;
     Occurence occurence;
+    boolean isOrderedAscendingly;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
         Log.d("Estado", "onCreate de listSymptoms");
 
         listView = findViewById(R.id.listView);
+        isOrderedAscendingly = false;
     }
 
     @Override
@@ -85,6 +90,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
                     keyList.add(key);
                 }
                 occurencesList = tmpOccurenceList;
+                Collections.reverse(occurencesList);
                 listView.setAdapter(new Adaptador(ListSymptomsActivity.this, occurencesList));
             }
 
@@ -110,5 +116,33 @@ public class ListSymptomsActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.symptoms_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.order_asc:
+                if (!isOrderedAscendingly) {
+                    Collections.reverse(occurencesList);
+                    listView.setAdapter(new Adaptador(ListSymptomsActivity.this, occurencesList));
+                    isOrderedAscendingly = true;
+                }
+                break;
+            case R.id.order_des:
+                if (isOrderedAscendingly) {
+                    Collections.reverse(occurencesList);
+                    listView.setAdapter(new Adaptador(ListSymptomsActivity.this, occurencesList));
+                    isOrderedAscendingly = false;
+                }
+                break;
+        }
+        return true;
     }
 }
