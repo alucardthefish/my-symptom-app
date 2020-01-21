@@ -2,6 +2,7 @@ package com.sop.firebasech2;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,6 +95,20 @@ public class ListSymptomsActivity extends AppCompatActivity {
                 occurencesList = tmpOccurenceList;
                 Collections.reverse(occurencesList);
                 listView.setAdapter(new Adaptador(ListSymptomsActivity.this, occurencesList));
+                if (occurencesList.isEmpty()) {
+                    // Display message when symptom list is empty
+                    ConstraintLayout myLayout = findViewById(R.id.list_symptom_layout_id);
+                    TextView tvEmptySymps = new TextView(ListSymptomsActivity.this);
+                    tvEmptySymps.setTextSize(16);
+                    tvEmptySymps.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                    tvEmptySymps.setText("No hay síntomas registrados aún en el sistema...");
+                    tvEmptySymps.setLayoutParams(new ConstraintLayout.LayoutParams(
+                            ConstraintLayout.LayoutParams.MATCH_PARENT,
+                            ConstraintLayout.LayoutParams.WRAP_CONTENT
+                    ));
+                    myLayout.addView(tvEmptySymps);
+                }
+
             }
 
             @Override
