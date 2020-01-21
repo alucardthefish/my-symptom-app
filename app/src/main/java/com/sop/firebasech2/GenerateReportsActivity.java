@@ -65,14 +65,14 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                     } else {
                         // Incorrect selection of interval. Initial is after Final date
                         Toast.makeText(GenerateReportsActivity.this,
-                                "Incorrect selection of interval. Final date must be after initial one!",
+                                R.string.toast_incorrect_date_selection,
                                 Toast.LENGTH_LONG)
                                 .show();
                     }
                 } else {
                     // At least one date was not selected
                     Toast.makeText(GenerateReportsActivity.this,
-                            "At least one date was not selected. Initial and Final date must be entered!",
+                            R.string.toast_exception_select_date,
                             Toast.LENGTH_LONG)
                             .show();
                 }
@@ -84,14 +84,14 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
             @Override
             public void onClick(View v) {
                 Toast.makeText(GenerateReportsActivity.this,
-                        "Share to the world your suffering",
+                        R.string.toast_share_symptoms_report,
                         Toast.LENGTH_LONG).show();
                 String reportText = mEtReport.getText().toString();
                 Intent mSharingIntent = new Intent(Intent.ACTION_SEND);
                 mSharingIntent.setType("text/plain");
                 mSharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Report of symptoms");
                 mSharingIntent.putExtra(Intent.EXTRA_TEXT, reportText);
-                startActivity(Intent.createChooser(mSharingIntent, "Elige como compartir tus síntomas"));
+                startActivity(Intent.createChooser(mSharingIntent, getResources().getString(R.string.sharing_symptom_title)));
             }
         });
     }
@@ -144,7 +144,7 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                 }
 
                 if (dataString.isEmpty()){
-                    printReport("Symptom records were not found by the specified date interval.");
+                    printReport(getResources().getString(R.string.report_not_found_in_interval_time));
                     // disable share button
                     mBtnShare.setEnabled(false);
                     mBtnShare.setBackgroundColor(getResources().getColor(R.color.common_google_signin_btn_text_light_disabled));
@@ -171,7 +171,6 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
         msg += "<p><b>Date:</b> "+ symptom.getTimeOfOccurence() +"    <b>Intensity:</b> "+ symptom.getIntensity() +"</p>";
         msg += "<p>"+ symptom.getDescription() +"</p><hr>";
         return msg;
-        //mEtReport.setText(Html.fromHtml(msg));
     }
 
     public void printReport(String data){

@@ -48,8 +48,6 @@ public class ListSymptomsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_symptoms);
-        Toast.makeText(ListSymptomsActivity.this, "listView created!", Toast.LENGTH_SHORT);
-        Log.d("Estado", "onCreate de listSymptoms");
 
         listView = findViewById(R.id.listView);
         isOrderedAscendingly = false;
@@ -73,7 +71,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        Toast.makeText(ListSymptomsActivity.this, "Cargando síntomas...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ListSymptomsActivity.this, R.string.message_load_symptoms, Toast.LENGTH_SHORT).show();
 
         final DatabaseReference occurencesRef = appRef.child(user.getUid()).child(FirebaseReferences.OCCURENCE_REFERENCE);
 
@@ -101,7 +99,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
                     TextView tvEmptySymps = new TextView(ListSymptomsActivity.this);
                     tvEmptySymps.setTextSize(16);
                     tvEmptySymps.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                    tvEmptySymps.setText("No hay síntomas registrados aún en el sistema...");
+                    tvEmptySymps.setText(getResources().getText(R.string.message_no_symptoms_in_bd));
                     tvEmptySymps.setLayoutParams(new ConstraintLayout.LayoutParams(
                             ConstraintLayout.LayoutParams.MATCH_PARENT,
                             ConstraintLayout.LayoutParams.WRAP_CONTENT
@@ -113,7 +111,7 @@ public class ListSymptomsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(ListSymptomsActivity.this, "Por favor revisa que tengas acceso a internet", Toast.LENGTH_LONG).show();
+                Toast.makeText(ListSymptomsActivity.this, R.string.message_connection_problem, Toast.LENGTH_LONG).show();
             }
         });
 

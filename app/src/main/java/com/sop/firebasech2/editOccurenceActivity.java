@@ -92,24 +92,24 @@ public class editOccurenceActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(editOccurenceActivity.this, "Sintoma actualizado exitosamente", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(editOccurenceActivity.this, R.string.toast_success_update_symptom, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent();
                             intent.putExtra("title", tvTitle);
                             intent.putExtra("description", etDesc);
                             setResult(RESULT_OK, intent);
                             finish();
                         } else {
-                            Toast.makeText(editOccurenceActivity.this, "Ocurrio un error. Sintoma no pudo ser actualizado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(editOccurenceActivity.this, R.string.toast_fail_update_symptom, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             } else {
                 // Los datos no se modificaron por lo tanto no se guardan
-                Toast.makeText(editOccurenceActivity.this, "No se registran cambios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(editOccurenceActivity.this, R.string.toast_unmodified_update_symptom, Toast.LENGTH_SHORT).show();
             }
         } else {
             // Los campos no pueden estar vacios
-            Toast.makeText(editOccurenceActivity.this, "Los campos titulo y descripción no pueden estar vacios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(editOccurenceActivity.this, R.string.toast_exception_add_symptom_req_fields, Toast.LENGTH_SHORT).show();
         }
     }
 }

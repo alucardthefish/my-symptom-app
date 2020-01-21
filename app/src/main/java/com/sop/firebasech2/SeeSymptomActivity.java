@@ -57,16 +57,16 @@ public class SeeSymptomActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(SeeSymptomActivity.this);
-                builder.setTitle("Advertencia");
-                builder.setMessage("Esta acción es irreversible ¿Está seguro de eliminar este síntoma?")
+                builder.setTitle(getResources().getString(R.string.delete_symptom_warning_title));
+                builder.setMessage(getResources().getString(R.string.delete_symptom_warning_text))
                         .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getResources().getText(R.string.delete_symptom_warning_ok), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 deleteSymptom();
                             }
                         })
-                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getResources().getText(R.string.delete_symptom_warning_cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
@@ -112,10 +112,10 @@ public class SeeSymptomActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(SeeSymptomActivity.this, "Síntoma eliminado exitosamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SeeSymptomActivity.this, R.string.toast_delete_symptom_success, Toast.LENGTH_SHORT).show();
                     SeeSymptomActivity.this.finish();
                 } else {
-                    Toast.makeText(SeeSymptomActivity.this, "Hubo un error. No se pudo eliminar el síntoma", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SeeSymptomActivity.this, R.string.toast_delete_symptom_fail, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -130,7 +130,6 @@ public class SeeSymptomActivity extends AppCompatActivity {
         i.putExtra("intensity", ""+intensidad);
         i.putExtra("date", fecha);
         i.putExtra("symptomKey", symptomKey);
-        //startActivity(i);
         startActivityForResult(i, EDIT_SYMPTOM_REQUEST_CODE);
 
     }

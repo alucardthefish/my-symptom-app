@@ -73,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
                         registerUser();
                     }
                     else {
-                        Toast.makeText(MainActivity.this, "El password debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.toast_password_validation, Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(MainActivity.this,"Debe completar los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,R.string.validate_fields_login, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void registerUser(){
         activateProgressBar(true);
-        Toast.makeText(MainActivity.this, "Registrando usuario...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, R.string.toast_register_user_transaction, Toast.LENGTH_SHORT).show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -138,20 +138,20 @@ public class MainActivity extends AppCompatActivity {
                          @Override
                          public void onComplete(@NonNull Task<Void> task2) {
                              if (task2.isSuccessful()){
-                                 Toast.makeText(MainActivity.this, "Cuenta creada satisfactoriamente. Cargando datos...", Toast.LENGTH_LONG).show();
+                                 Toast.makeText(MainActivity.this, R.string.toast_success_user_register, Toast.LENGTH_LONG).show();
                                  FirebaseUser currentUser = mAuth.getCurrentUser();
 
                                  Router router = new Router(MainActivity.this);
                                  router.goto_profile(currentUser);
                              } else {
                                  activateProgressBar(false);
-                                 Toast.makeText(MainActivity.this, "No se pudieron crear los datos correctamente", Toast.LENGTH_SHORT).show();
+                                 Toast.makeText(MainActivity.this, R.string.toast_fail_user_register, Toast.LENGTH_SHORT).show();
                              }
                          }
                      });
                  } else {
                      activateProgressBar(false);
-                     Toast.makeText(MainActivity.this,"No se pudo registrar este usuario: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                     Toast.makeText(MainActivity.this, getResources().getText(R.string.toast_fail_user_register_two) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                  }
             }
         });

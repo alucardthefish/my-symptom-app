@@ -46,16 +46,6 @@ public class addOccurenceActivity extends AppCompatActivity {
         et_description = findViewById(R.id.et_description);
         spinner_intensities = findViewById(R.id.spinner);
 
-        // Button for going back to profile activity
-        /*mButtonProfile = findViewById(R.id.btn_goto_profile);
-        mButtonProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Router router = new Router(addOccurenceActivity.this);
-                router.goto_profile(user);
-            }
-        });*/
-
         // Button for add a new occurence in the database
         mButtonAddOccurence = findViewById(R.id.btn_add);
         mButtonAddOccurence.setOnClickListener(new View.OnClickListener() {
@@ -67,26 +57,23 @@ public class addOccurenceActivity extends AppCompatActivity {
                     String title = et_occurence_title.getText().toString();
                     String desc = et_description.getText().toString();
                     int intensity = Integer.parseInt(spinner_intensities.getSelectedItem().toString());
-                    if (desc.isEmpty()){
-                        desc = "No Description";
-                    }
                     int type = 1;   // Symptom type
                     Occurence occurence = new Occurence(title, desc, intensity, type);
                     appRef.child(userId).child(FirebaseReferences.OCCURENCE_REFERENCE).push().setValue(occurence).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(addOccurenceActivity.this,"Síntoma adicionada exitosamente", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(addOccurenceActivity.this, R.string.toast_success_add_symptom, Toast.LENGTH_SHORT).show();
                                 Router router = new Router(addOccurenceActivity.this);
                                 router.goto_profile(user);
                                 finish();
                             } else {
-                                Toast.makeText(addOccurenceActivity.this, "Hubo un problema", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(addOccurenceActivity.this, R.string.toast_fail_add_symptom, Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 } else {
-                    Toast.makeText(addOccurenceActivity.this, "Los campos titulo y descripción no pueden estar vacios", Toast.LENGTH_LONG).show();
+                    Toast.makeText(addOccurenceActivity.this, R.string.toast_exception_add_symptom_req_fields, Toast.LENGTH_LONG).show();
                 }
             }
         });

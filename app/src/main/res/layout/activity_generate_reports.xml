@@ -28,7 +28,7 @@
             android:background="@color/colorPrimary"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Fecha inicial"
+            android:text="@string/btn_initial_date"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -53,7 +53,7 @@
             android:background="@color/colorPrimary"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:text="Fecha final"
+            android:text="@string/btn_final_date"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/colorPrimary"
-            android:text="Generar"
+            android:text="@string/btn_generate_reports"
             android:textColor="@android:color/white" />
 
         <Button
@@ -95,12 +95,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Compartir"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:enabled="false"
             android:background="@color/common_google_signin_btn_text_light_disabled"
             android:drawableLeft="@drawable/ic_share"
+            android:enabled="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/btn_share_reports"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

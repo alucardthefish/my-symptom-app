@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!email.isEmpty() && !password.isEmpty()) {
                     loginUser();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Complete los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.validate_fields_login, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
-                    Toast.makeText(LoginActivity.this, "Acceso autorizado. Cargando datos...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, R.string.toast_success_login, Toast.LENGTH_LONG).show();
                     FirebaseUser currentUser = mAuth.getCurrentUser();
 
                     Router router = new Router(LoginActivity.this);
@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
                     activateProgressBar(false);
-                    Toast.makeText(LoginActivity.this, "No se pudo iniciar sesión, compruebe los datos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.toast_fail_login, Toast.LENGTH_SHORT).show();
                 }
             }
         });
