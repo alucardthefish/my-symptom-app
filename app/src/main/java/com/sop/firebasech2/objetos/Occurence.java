@@ -2,13 +2,14 @@ package com.sop.firebasech2.objetos;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Occurence {
-    String title;
-    String description;
-    int intensity;          // Could be a scale 1 up to 5
-    int type;               // 1 for symptom and 2 for poop diary.
-    String timeOfOccurence; // to check what time it was added
+    private String title;
+    private String description;
+    private int intensity;          // Could be a scale 1 up to 5
+    private int type;               // 1 for symptom and 2 for poop diary.
+    private String timeOfOccurence; // to check what time it was added
 
     public Occurence(String title, String description, int intensity, int type) {
         this.title = title;
@@ -17,7 +18,7 @@ public class Occurence {
         this.type = type;
         //Create the date and time formatter to be used in dates
         //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         this.timeOfOccurence = formatter.format(new Date());
     }
 
