@@ -1,6 +1,9 @@
 package com.sop.firebasech2;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,11 +23,14 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView mTextViewName;
     private TextView mTextViewEmail;
     private FirebaseAuth mAuth;
+    private Dialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        mDialog = new Dialog(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -92,6 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         switch (id) {
             case R.id.menuAcerca:
                 Toast.makeText(this, "Seleccionado información", Toast.LENGTH_SHORT).show();
+                showAboutPopup();
                 break;
             case R.id.menuSignOut:
                 mAuth.signOut();
@@ -100,5 +107,20 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    public void showAboutPopup() {
+        TextView txtclose;
+        mDialog.setContentView(R.layout.about_info_popup);
+        txtclose = mDialog.findViewById(R.id.txtclose);
+
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.dismiss();
+            }
+        });
+        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mDialog.show();
     }
 }
