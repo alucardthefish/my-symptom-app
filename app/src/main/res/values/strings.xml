@@ -75,4 +75,5 @@
     <string name="btn_final_date">Fecha final</string>
     <string name="btn_generate_reports">Generar</string>
     <string name="btn_share_reports">Compartir</string>
+    <string name="info">Pensado como una herramienta útil para personas olvidadizas a la hora de ir al médico. La aplicación sirve como un diario de síntomas, si te sientes mal solo escribe tus dolencias en la aplicación. Luego, cuando estés en atención médica; puedes compartir todos esos síntomas con tu médico como un informe por fechas. La aplicación también es una excelente herramienta de comunicación para ayudar a personas sordo mudas.</string>
 </resources>

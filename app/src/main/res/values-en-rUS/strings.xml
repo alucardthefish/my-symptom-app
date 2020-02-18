@@ -69,4 +69,5 @@
     <string name="btn_generate_reports">Generate</string>
     <string name="btn_initial_date">Initial date</string>
     <string name="btn_share_reports">Share</string>
+    <string name="info">"Thought as a useful tool for forgetful people when going to the doctor. The application serves as a symptom diary, if you're feeling bad just enter your dolencies in the app. Then, when you are in medical care you can share all those symptoms with your doctor as a report by dates. The app is also an excellent communication tool for assisting deaf mute people. "</string>
 </resources>
