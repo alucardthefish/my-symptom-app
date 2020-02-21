@@ -1,6 +1,7 @@
 package com.sop.firebasech2.objetos;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.sop.firebasech2.R;
 
 import java.util.ArrayList;
+
 
 public class Adaptador extends BaseAdapter {
 
@@ -42,6 +44,10 @@ public class Adaptador extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final View vista = inflater.inflate(R.layout.occurence_element_list, null);
+        if (position % 2 == 1) {
+            // Set different color to give a contrast
+            vista.setBackgroundColor(Color.parseColor("#D7FFE2"));
+        }
         TextView tv_titulo = vista.findViewById(R.id.tvTitulo);
         TextView tv_descripcion = vista.findViewById(R.id.tv_description);
         TextView tv_datetime = vista.findViewById(R.id.tv_datetime);
