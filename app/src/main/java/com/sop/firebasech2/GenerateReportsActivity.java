@@ -105,7 +105,7 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
         int id = v.getId();
         switch (id) {
             case R.id.btnInitialDate:
-                DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         mEtInitialDate.setText(year+"-"+Utils.dateNumberDecorator(month+1)+"-"+Utils.dateNumberDecorator(dayOfMonth));
@@ -114,7 +114,7 @@ public class GenerateReportsActivity extends AppCompatActivity implements View.O
                 datePickerDialog.show();
                 break;
             case R.id.btnFinalDate:
-                DatePickerDialog datePDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePDialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         mEtFinalDate.setText(year+"-"+Utils.dateNumberDecorator(month+1)+"-"+Utils.dateNumberDecorator(dayOfMonth));
