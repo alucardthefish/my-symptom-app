@@ -1,7 +1,6 @@
 package com.sop.firebasech2.objetos;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +45,7 @@ public class Adaptador extends BaseAdapter {
         final View vista = inflater.inflate(R.layout.occurence_element_list, null);
         if (position % 2 == 1) {
             // Set different color to give a contrast
-            vista.setBackgroundColor(Color.parseColor("#D7FFE2"));
+            vista.setBackgroundColor(context.getResources().getColor(R.color.contrastColorOccurrenceListElement));
         }
         TextView tv_titulo = vista.findViewById(R.id.tvTitulo);
         TextView tv_descripcion = vista.findViewById(R.id.tv_description);
@@ -68,5 +67,10 @@ public class Adaptador extends BaseAdapter {
         tv_intensity.setText(Html.fromHtml(intensity));
 
         return vista;
+    }
+
+    public void addListItemOccurrenceToAdapter(ArrayList<Occurence> list) {
+        occurencesList.addAll(list);
+        this.notifyDataSetChanged();
     }
 }
