@@ -7,4 +7,5 @@
     <color name="elementlistcolor">#F07BEA99</color>
     <color name="backgroundColor">#C1FFDA</color>
     <color name="textViewBackgroundColor">#E8FFEA</color>
+    <color name="contrastColorOccurrenceListElement">#D7FFE2</color>
 </resources>
